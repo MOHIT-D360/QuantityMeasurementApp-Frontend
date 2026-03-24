@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Book Shopping</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- ── LOGO CARD ── -->
+    <div class="logo-card">
+      <div class="circle-illustration">
+        <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cart body -->
+          <g transform="translate(20, 55)">
+            <path d="M10 10 L100 10 L88 55 L22 55 Z" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
+            <line x1="13" y1="23" x2="97" y2="23" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <line x1="16" y1="36" x2="94" y2="36" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <line x1="19" y1="47" x2="91" y2="47" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <line x1="30" y1="12" x2="24" y2="53" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <line x1="50" y1="11" x2="45" y2="54" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <line x1="70" y1="11" x2="66" y2="54" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <path d="M0 4 Q5 0 10 10" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="30" cy="64" r="7" fill="#1a5fa0" stroke="#fff" stroke-width="2.5"/>
+            <circle cx="30" cy="64" r="3" fill="#fff"/>
+            <circle cx="75" cy="64" r="7" fill="#1a5fa0" stroke="#fff" stroke-width="2.5"/>
+            <circle cx="75" cy="64" r="3" fill="#fff"/>
+          </g>
+          <!-- Person -->
+          <ellipse cx="72" cy="62" rx="14" ry="17" fill="#f5e6d3" transform="rotate(-5,72,62)"/>
+          <path d="M60 56 Q72 48 84 56 L86 76 Q72 80 58 76 Z" fill="#fff" opacity="0.95"/>
+          <circle cx="76" cy="38" r="14" fill="#f5e6d3"/>
+          <path d="M64 32 Q70 22 82 26 Q90 30 88 38 Q85 30 80 28 Q70 25 66 35 Z" fill="#2a1a0a"/>
+          <circle cx="88" cy="30" r="6" fill="#2a1a0a"/>
+          <path d="M58 76 Q45 80 38 90 Q42 94 48 90 Q52 84 60 82 Z" fill="#6b3fa0"/>
+          <path d="M58 76 Q50 90 46 105" stroke="#6b3fa0" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <ellipse cx="44" cy="107" rx="9" ry="5" fill="#4a2080" transform="rotate(-15,44,107)"/>
+          <path d="M72 78 Q80 92 78 108" stroke="#6b3fa0" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <ellipse cx="76" cy="109" rx="9" ry="5" fill="#4a2080"/>
+          <!-- Book -->
+          <rect x="42" y="55" width="22" height="28" rx="3" fill="#9b1c2e" transform="rotate(-20,53,69)"/>
+          <rect x="44" y="57" width="20" height="26" rx="2" fill="#c0283e" transform="rotate(-20,54,70)"/>
+          <line x1="48" y1="63" x2="60" y2="59" stroke="#fff" stroke-width="1.5" opacity="0.6" transform="rotate(-20,54,61)"/>
+          <line x1="47" y1="67" x2="59" y2="63" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="rotate(-20,53,65)"/>
+          <!-- Arms -->
+          <path d="M60 60 Q52 58 44 62" stroke="#f5e6d3" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <path d="M84 58 Q92 48 98 40" stroke="#f5e6d3" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <circle cx="98" cy="39" r="5" fill="#f5e6d3"/>
+          <line x1="98" y1="34" x2="100" y2="28" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+          <line x1="102" y1="36" x2="106" y2="31" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+          <line x1="104" y1="40" x2="110" y2="37" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-name">Quantity Measurement<br>App</div>
+    </div>
+
+    <!-- ── AUTH CARD ── -->
+    <div class="auth-card">
+      <div class="tabs">
+        <button class="tab-btn" id="loginTab" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn active" id="signupTab" onclick="switchTab('signup')">Signup</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="form-panel" id="loginForm">
+        <div class="field">
+          <label for="loginEmail">Email Id</label>
+          <input
+            type="email" id="loginEmail"
+            placeholder="you@example.com"
+            oninput="liveValidate(this,'email')"
+            onblur="liveValidate(this,'email')"
+          />
+          <span class="err-msg" id="loginEmailErr"></span>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <div class="input-wrap">
+            <input
+              type="password" id="loginPassword" class="pw-field"
+              placeholder="Enter password"
+              oninput="liveValidate(this,'password')"
+              onblur="liveValidate(this,'password')"
+            />
+            <button type="button" class="toggle-pw" onclick="togglePw('loginPassword',this)" aria-label="Toggle password">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+          <span class="err-msg" id="loginPasswordErr"></span>
+        </div>
+        <button class="btn-submit" onclick="submitLogin()">Login</button>
+      </div>
+
+      <!-- SIGNUP FORM -->
+      <div class="form-panel active" id="signupForm">
+        <div class="field">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text" id="fullName"
+            placeholder="John Doe"
+            oninput="liveValidate(this,'name')"
+            onblur="liveValidate(this,'name')"
+          />
+          <span class="err-msg" id="fullNameErr"></span>
+        </div>
+        <div class="field">
+          <label for="signupEmail">Email Id</label>
+          <input
+            type="email" id="signupEmail"
+            placeholder="you@example.com"
+            oninput="liveValidate(this,'email')"
+            onblur="liveValidate(this,'email')"
+          />
+          <span class="err-msg" id="signupEmailErr"></span>
+        </div>
+        <div class="field">
+          <label for="signupPassword">Password</label>
+          <div class="input-wrap">
+            <input
+              type="password" id="signupPassword" class="pw-field"
+              placeholder="Min 8 chars, 1 uppercase, 1 number"
+              oninput="liveValidate(this,'password')"
+              onblur="liveValidate(this,'password')"
+            />
+            <button type="button" class="toggle-pw" onclick="togglePw('signupPassword',this)" aria-label="Toggle password">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+          <span class="err-msg" id="signupPasswordErr"></span>
+        </div>
+        <div class="field">
+          <label for="mobile">Mobile Number</label>
+          <input
+            type="tel" id="mobile"
+            placeholder="+91 9876543210"
+            oninput="liveValidate(this,'mobile')"
+            onblur="liveValidate(this,'mobile')"
+          />
+          <span class="err-msg" id="mobileErr"></span>
+        </div>
+        <button class="btn-submit" onclick="submitSignup()">Signup</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
