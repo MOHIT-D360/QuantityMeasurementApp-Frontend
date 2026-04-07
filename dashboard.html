@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quantity Measurement</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Welcome To Quantity Measurement</h1>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <!-- CHOOSE TYPE -->
+    <p class="section-label">CHOOSE TYPE</p>
+    <div class="type-grid">
+      <div class="type-card active" onclick="selectType('length', this)">
+        <span class="type-icon">📏</span>
+        <span class="type-name">Length</span>
+      </div>
+      <div class="type-card" onclick="selectType('weight', this)">
+        <span class="type-icon">⚖️</span>
+        <span class="type-name">Weight</span>
+      </div>
+      <div class="type-card" onclick="selectType('temperature', this)">
+        <span class="type-icon">🌡️</span>
+        <span class="type-name">Temperature</span>
+      </div>
+      <div class="type-card" onclick="selectType('volume', this)">
+        <span class="type-icon">🧪</span>
+        <span class="type-name">Volume</span>
+      </div>
+    </div>
+
+    <!-- CHOOSE ACTION -->
+    <p class="section-label">CHOOSE ACTION</p>
+    <div class="action-tabs">
+      <button class="action-btn" onclick="selectAction('comparison', this)">Comparison</button>
+      <button class="action-btn" onclick="selectAction('conversion', this)">Conversion</button>
+      <button class="action-btn active" onclick="selectAction('arithmetic', this)">Arithmetic</button>
+    </div>
+
+    <!-- COMPARISON PANEL -->
+    <div class="panel" id="panel-comparison">
+      <div class="two-col">
+        <div class="input-group">
+          <p class="input-label">FROM</p>
+          <input type="number" id="cmp-val1" class="big-input" value="1" oninput="calculate()" />
+          <select id="cmp-unit1" onchange="calculate()"></select>
+        </div>
+        <div class="input-group">
+          <p class="input-label">TO</p>
+          <input type="number" id="cmp-val2" class="big-input" value="1000" oninput="calculate()" />
+          <select id="cmp-unit2" onchange="calculate()"></select>
+        </div>
+      </div>
+      <div class="result-box" id="cmp-result">
+        <p class="result-label">RESULT</p>
+        <p class="result-value" id="cmp-result-text">—</p>
+      </div>
+    </div>
+
+    <!-- CONVERSION PANEL -->
+    <div class="panel" id="panel-conversion">
+      <div class="two-col">
+        <div class="input-group">
+          <p class="input-label">FROM</p>
+          <input type="number" id="conv-val" class="big-input" value="1" oninput="calculate()" />
+          <select id="conv-unit1" onchange="calculate()"></select>
+        </div>
+        <div class="input-group">
+          <p class="input-label">TO</p>
+          <input type="number" id="conv-result-val" class="big-input" value="" readonly />
+          <select id="conv-unit2" onchange="calculate()"></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARITHMETIC PANEL -->
+    <div class="panel" id="panel-arithmetic">
+      <div class="arith-row">
+        <div class="input-group">
+          <p class="input-label">VALUE 1</p>
+          <input type="number" id="arith-val1" class="big-input" value="1" oninput="calculate()" />
+          <select id="arith-unit1" onchange="calculate()"></select>
+        </div>
+
+        <div class="operator-box">
+          <select id="arith-operator" onchange="calculate()">
+            <option value="+">+</option>
+            <option value="-">−</option>
+            <option value="*">×</option>
+            <option value="/">÷</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <p class="input-label">VALUE 2</p>
+          <input type="number" id="arith-val2" class="big-input" value="1" oninput="calculate()" />
+          <select id="arith-unit2" onchange="calculate()"></select>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <p class="result-label">RESULT</p>
+        <div class="result-row">
+          <p class="result-value" id="arith-result-text">—</p>
+          <select id="arith-result-unit" onchange="calculate()"></select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

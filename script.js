@@ -13,6 +13,16 @@ const MSGS = {
   mobile:   'Enter a valid 10-digit mobile number.'
 };
 
+// ── USER STORAGE ──
+function getUsers() {
+  const users = localStorage.getItem('users');
+  return users ? JSON.parse(users) : [];
+}
+
+function saveUsers(users) {
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
 // ── TAB SWITCH ──
 function switchTab(tab) {
   const isLogin = tab === 'login';
@@ -46,6 +56,7 @@ function setFieldState(input, errEl, state, msg) {
 
 // ── LIVE VALIDATION (on input / blur) ──
 function liveValidate(input, type) {
+ 
   const errId = getErrId(input.id);
   const err   = document.getElementById(errId);
   if (!err) return;
@@ -106,7 +117,20 @@ function showToast(msg) {
 function submitLogin() {
   const emailOk = validateField('loginEmail',    'email');
   const pwOk    = validateField('loginPassword', 'password');
-  if (emailOk && pwOk) showToast('✓ Login successful! Welcome back.');
+  if (emailOk && pwOk) {
+    const users = getUsers();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+      showToast('✓ Login successful! Welcome back.');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 1000);
+    } else {
+      showToast('✗ Invalid email or password.');
+    }
+  }
 }
 
 function submitSignup() {
@@ -114,5 +138,25 @@ function submitSignup() {
   const emailOk  = validateField('signupEmail',    'email');
   const pwOk     = validateField('signupPassword', 'password');
   const mobileOk = validateField('mobile',         'mobile');
-  if (nameOk && emailOk && pwOk && mobileOk) showToast('✓ Account created! Please log in.');
+  if (nameOk && emailOk && pwOk && mobileOk) {
+    const users = getUsers();
+    const email = document.getElementById('signupEmail').value.trim();
+    const existingUser = users.find(user => user.email === email);
+    if (existingUser) {
+      showToast('✗ Email already registered.');
+      return;
+    }
+    const newUser = {
+      name: document.getElementById('fullName').value.trim(),
+      email: email,
+      password: document.getElementById('signupPassword').value,
+      mobile: document.getElementById('mobile').value.trim()
+    };
+    users.push(newUser);
+    saveUsers(users);
+    showToast('✓ Account created! Please log in.');
+    setTimeout(() => {
+      switchTab('login');
+    }, 1000);
+  }
 }

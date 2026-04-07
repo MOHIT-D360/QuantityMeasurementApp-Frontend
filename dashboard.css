@@ -1,0 +1,310 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #eef2fb;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(to right, #5b6ef5, #7b8af7);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.header h1 {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 820px;
+  margin: 30px auto;
+  padding: 0 20px 40px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+
+/* ── TYPE CARDS ── */
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.type-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background: #fff;
+  transition: border-color 0.2s, background 0.2s;
+  gap: 10px;
+}
+
+.type-card:hover {
+  background: #f0f4ff;
+}
+
+.type-card.active {
+  border-color: #5b6ef5;
+  background: #eef2ff;
+}
+
+.type-icon {
+  font-size: 2rem;
+}
+
+.type-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ── ACTION TABS ── */
+.action-tabs {
+  display: flex;
+  gap: 10px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.action-btn:hover {
+  background: #f0f4ff;
+}
+
+.action-btn.active {
+  background: #5b6ef5;
+  color: #fff;
+  border-color: #5b6ef5;
+}
+
+/* ── PANELS ── */
+.panel {
+  display: none;
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* ── TWO COLUMN LAYOUT ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ── ARITHMETIC ROW ── */
+.arith-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: end;
+}
+
+/* ── INPUT GROUP ── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #888;
+}
+
+.big-input {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+  border: none;
+  border-bottom: 2px solid #eee;
+  outline: none;
+  width: 100%;
+  padding: 4px 0;
+  background: transparent;
+}
+
+.big-input:focus {
+  border-bottom-color: #5b6ef5;
+}
+
+/* readonly style */
+.big-input[readonly] {
+  color: #5b6ef5;
+  cursor: default;
+}
+
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #444;
+  background: #fafafa;
+  cursor: pointer;
+  outline: none;
+  appearance: auto;
+}
+
+select:focus {
+  border-color: #5b6ef5;
+}
+
+/* ── OPERATOR BOX ── */
+.operator-box {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 2px;
+}
+
+.operator-box select {
+  width: 64px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  border-color: #5b6ef5;
+  color: #5b6ef5;
+  padding: 8px 6px;
+}
+
+/* ── RESULT BOX ── */
+.result-box {
+  margin-top: 20px;
+  border: 2px solid #5b6ef5;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.result-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.result-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #5b6ef5;
+}
+
+.result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.result-row select {
+  width: 160px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .type-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .arith-row {
+    grid-template-columns: 1fr;
+  }
+
+  .operator-box {
+    justify-content: center;
+    padding: 6px 0;
+  }
+
+  .result-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-row select {
+    width: 100%;
+  }
+
+  .header h1 {
+    font-size: 1.1rem;
+  }
+
+  .logout-btn {
+    position: static;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    max-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
